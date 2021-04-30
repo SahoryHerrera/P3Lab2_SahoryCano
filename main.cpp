@@ -16,42 +16,44 @@ double Desviacion_estandar();
 void triangulo_de_pascal(int,int,int[],int[]);
 void limpiar(int[],int[]);
 void grafico_de_barra(int,int,int[],int[]);
-void desviacionEstandar();
-void ejercicio3();
+void Desviacion();
+void Grafica_Barra();
 
 /*30/04/2021*/
 
 
-void desviacionEstandar(){
+void Desviacion(){
 	int size = 20;
-	int Arreglo[size];
+	int Array[size];
 	double suma = 0;
 	double result = 0;
 	double sumaresult = 0;
 	double total = 0;
-	double raizcuadrada = 0;
+	double raiz = 0;
 	srand (time(NULL));
 	for(int i = 0; i < size; i++){
-		Arreglo[i] = 1+rand()%100;	
+		Array[i] = 1+rand()%100;	
 	}
-	// imprimir
+	cout<<"[";
 	for(int i = 0; i < size; i++){
-	cout<<	Arreglo[i]<<", ";	
+	cout<<Array[i]<<", ";	
 	}
-	// sumar
+	cout<<"]";
+	
 	cout<<endl;
 	for(int i = 0; i < size; i++){
-		suma += Arreglo[i];	
+		suma += Array[i];	
 	}
 	double prom = suma / 2.0;
 	for(int i = 0; i < size; i++){
-		 result = Arreglo[i] - prom;
+		 result = Array[i] - prom;
 		sumaresult += result * result;
 	}
 	total = sumaresult / size;
-	raizcuadrada = sqrt(total);
-
- 	cout<< "El resultado de la desviacion estandar es: : " << raizcuadrada << endl;
+	raiz = sqrt(total);
+	cout<<endl;
+ 	cout<< "El resultado de la desviacion estandar es: : " << raiz << endl;
+ 		cout<<endl;
  	
     }
 
@@ -60,11 +62,12 @@ void desviacionEstandar(){
 int menu(){
 	int p = 0; 
 	while (p != 4){
-	cout<<"--------[MENU]------"<<endl;
+	cout<<"+--------[MENU]------+"<<endl;
 	cout<<"Ejercicio---------[1]"<<endl;
 	cout<<"Ejercicio---------[2]"<<endl;
 	cout<<"Ejercicio---------[3]"<<endl;
 	cout<<"Salir-------------[4]"<<endl;	
+	cout<<"+--------------------+"<<endl;
 	cin>> p; 
 		if (p == 4){
 			cout << "Saliendo... " <<endl; 
@@ -106,17 +109,14 @@ int main(int argc, char** argv) {
 			case 2:{
 				/*calcule el promedio y la desviación estándar 
 				poblacional de los elementos de un arreglo*/
-				desviacionEstandar();
-
-		
+				Desviacion();
 				
 				break;
 			}//fin case 2
 			
 			case 3:{
 				/*Grafico de barra*/
-			
-		    ejercicio3();
+		       Grafica_Barra();
 			
 				break;
 			}//fin case 3
@@ -135,38 +135,38 @@ int main(int argc, char** argv) {
 		p = menu();
 				
 		
-	}
+	}//fin del while
 	
 	return 0;
 }//fin main
 
- void ejercicio3(){
+ void Grafica_Barra(){
+ 	
     	int size = 10;
-		int Arreglo1[size];
-		int Arreglo2[size];
-		char caracter1 = 177;
-		char caracter2 = 178;
+		int Array_1[size],Array_2[size];	
+		char Num_1 = 177;
+		char Num_2 = 178;
 		srand (time(NULL));
 		for(int i = 0; i < size; i++){
-			Arreglo1[i] = 1+rand()%20;	
+			Array_1[i] = 1+rand()%20;	
 		}
 		for(int i = 0; i < size; i++){
-			Arreglo2[i] = 1+rand()%20;	
+			Array_2[i] = 1+rand()%20;	
 		}
 		for(int i = 0; i < size; i++){
 			cout<<i+1<<" "<<endl;
-			for(int j = 0; j < Arreglo1[i]; j++){
-				cout<<caracter1;
+			for(int j = 0; j < Array_1[i]; j++){
+				cout<<Num_1;
 			}	
 			cout<<endl;
-			for(int j = 0; j < Arreglo2[i]; j++){
-				cout<<caracter2;
+			for(int j = 0; j < Array_2[i]; j++){
+				cout<<Num_2;
 			}	
 			cout<<endl;
-		}
+		}//for donde se imprimen los dos arreglos
 		
 		
-	}
+	}//fin del metodo grafico de barra
 
 void Random(int array[], bool flag){
 	
@@ -207,13 +207,13 @@ void triangulo_de_pascal(int contador, int filas, int res_anterior[], int salida
         } else {
             for (int j = 0; j < contador; j++) {
                 salida[j] = res_anterior[j] + res_anterior[j - 1];
-            }//
-        }//
+            }
+        }
         for (int i = 0; i < 100; i++) {
             if (salida[i] > 0) {
                 cout << salida[i] << " ";
-            }//
-        }//
+            }
+        }
         cout << endl;
         limpiar(res_anterior, salida);
         triangulo_de_pascal(contador + 1, filas, res_anterior, salida);
