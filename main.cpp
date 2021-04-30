@@ -27,7 +27,7 @@ void Desviacion(){
 	int Array[size];
 	double suma = 0;
 	double result = 0;
-	double sumaresult = 0;
+	double suma_t = 0;
 	double total = 0;
 	double raiz = 0;
 	srand (time(NULL));
@@ -47,9 +47,9 @@ void Desviacion(){
 	double prom = suma / 2.0;
 	for(int i = 0; i < size; i++){
 		 result = Array[i] - prom;
-		sumaresult += result * result;
+		suma_t += result * result;
 	}
-	total = sumaresult / size;
+	total = suma_t / size;
 	raiz = sqrt(total);
 	cout<<endl;
  	cout<< "El resultado de la desviacion estandar es: : " << raiz << endl;
@@ -87,6 +87,7 @@ int main(int argc, char** argv) {
 		switch(p){
 			case 1:{	
 			/*Triangulo de pascal*/
+			cout<<"Triangulo de pascal"<<endl;
 			int filas=0;
 			while (filas<1){
 				cout <<"Ingrese numero de filas: ";
@@ -109,6 +110,7 @@ int main(int argc, char** argv) {
 			case 2:{
 				/*calcule el promedio y la desviación estándar 
 				poblacional de los elementos de un arreglo*/
+				cout<<"Calculo de desviacion estandar"<<endl;
 				Desviacion();
 				
 				break;
@@ -116,7 +118,8 @@ int main(int argc, char** argv) {
 			
 			case 3:{
 				/*Grafico de barra*/
-		       Grafica_Barra();
+				cout<<"Grafico de barra"<<endl;
+		        Grafica_Barra();
 			
 				break;
 			}//fin case 3
@@ -199,7 +202,6 @@ void Imprimir_Arreglo(int array[], int size){
 }//fin metodo de imprimir arreglo
 
 
-
 void triangulo_de_pascal(int contador, int filas, int res_anterior[], int salida[]) {
     if (contador < filas) {
         if (contador == 1) {
@@ -218,7 +220,7 @@ void triangulo_de_pascal(int contador, int filas, int res_anterior[], int salida
         limpiar(res_anterior, salida);
         triangulo_de_pascal(contador + 1, filas, res_anterior, salida);
     }
-}
+}//fin de metodo del triangulo de pascal
 
 void limpiar(int res_anterior[], int salida[]) {
     for (int i = 0; i < 100; i++) {
@@ -228,7 +230,7 @@ void limpiar(int res_anterior[], int salida[]) {
         res_anterior[i] = salida[i];
         salida[i] = 0;
     }
-}
+}//fin metodo limiar
 
 
 
